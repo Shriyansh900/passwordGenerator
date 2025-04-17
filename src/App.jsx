@@ -12,7 +12,6 @@ const App = () => {
   let [fPass, setPass] = useState("");
 
   let createPassword = () => {
-    toast.success("Password Generated...👍")
     let finalPass = "";
     let charSet = "";
     if (Uppercase || Lowercase || Number || Symbol) {
@@ -20,6 +19,7 @@ const App = () => {
       if (Lowercase) charSet += LC;
       if (Number) charSet += NUM;
       if (Symbol) charSet += SC;
+      toast.success("Password Generated...👍")
       for (let i = 0; i < PasswordLength; i++) {
         finalPass += charSet.charAt(Math.floor(Math.random() * charSet.length));
       }
@@ -65,9 +65,9 @@ const App = () => {
             type="number"
             min={10}
             max={20}
-            onKeyDown={(event) =>
-              event.key.length === 1 && event.preventDefault()
-            }
+            // onKeyDown={(event) =>
+            //   event.key.length === 1 && event.preventDefault()
+            // }
             value={PasswordLength}
             onChange={(e) => setPasswordLength(e.target.value)}
             className=" w-12 border py-1 px-0.5   bg-white shadow shadow-neutral-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
